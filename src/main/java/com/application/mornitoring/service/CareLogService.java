@@ -1,4 +1,4 @@
 package com.application.mornitoring.service;
 
-public interface GasLogService {
+public interface CareLogService {
 }

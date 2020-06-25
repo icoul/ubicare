@@ -21,16 +21,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 
     @Transactional
     @Modifying
-    @Query("update User u set u.userId = :#{#user.userId}, " +
-                             "u.userNm = :#{#user.userNm}, " +
-                             "u.auth = :#{#user.auth}, " +
-                             "u.rgstId = 'admin', " +
-                             "u.rgstDt = :#{#user.rgstDt} " +
-            "where u.userIdx = :#{#user.userIdx}")
-    int updateUserById(@Param("user") User user);
-
-    @Transactional
-    @Modifying
     @Query("update User u set u.userPw = :#{#dto.pwd} " +
             "where u.userIdx = :#{#dto.userIdx}")
     int updatePwdByIdx(@Param("dto") PwdUpdateDTO dto);

@@ -17,9 +17,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name="gas_log_tb")
+@Table(name="care_log_tb")
 @JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
-public class GasLog {
+public class CareLog {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   @Column(name = "log_idx")
@@ -33,15 +33,7 @@ public class GasLog {
   private Module module;
 
   @Column(name = "`A1`")
-  private Double o2;
-  @Column(name = "`A2`")
-  private Double h2s;
-  @Column(name = "`A3`")
-  private Double co;
-  @Column(name = "`A4`")
-  private Double co2;
-  @Column(name = "`A5`")
-  private Double ch4;
+  private Double bodyTemp;
   private Double temperature;
   private Double humidity;
   private Double rssi;

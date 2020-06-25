@@ -28,23 +28,11 @@ public class Module {
   @Column(name = "model_no")
   private String modelNo;
 
+  @Column(name = "model_serial")
+  private String modelSerial;
+
   @Column(name = "model_nm")
   private String modelNm;
-
-  @Column(name = "module_type")
-  private String moduleType;
-
-  @Column(name = "area_nm")
-  private String areaNm;
-
-  @Column(name = "x_axis")
-  private Double xAxis;
-
-  @Column(name = "y_axis")
-  private Double yAxis;
-
-  @Column(name = "inst_nm")
-  private String instNm;
 
   @Column(name = "rgst_id")
   private String rgstId;

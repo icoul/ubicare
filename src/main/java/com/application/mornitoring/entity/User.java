@@ -44,8 +44,12 @@ public class User{
   @Column(name = "tel_no_2")
   private String telNo2;
 
-  private String addr;
-  private String rem;
+  private String email;
+
+  @Column(name = "post_code")
+  private String postCode;
+  private String addr1;
+  private String addr2;
 
   @Column(name = "rgst_id")
   private String rgstId;

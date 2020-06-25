@@ -75,9 +75,9 @@ public class UserController {
    * @return
    */
   @PostMapping("/api/user/updateData")
-  public Integer updateUserData(@RequestBody Map<String, Object> inputData){
+  public User updateUserData(@RequestBody Map<String, Object> inputData){
     User user = userService.convertDataToUser(inputData);
-    return userRepository.updateUserById(user);
+    return userRepository.save(user);
   }
   
   /**
