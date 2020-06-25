@@ -9,9 +9,9 @@ import './AppHeader.css';
 const AppHeader = (props) => {
   return(
     <header className="App-header">
+      <HeaderButtons />
       <Title {...props}/>
       <Clock endPoint="/api/hello"/>
-      <HeaderButtons {...props}/>
     </header>
   )
 }

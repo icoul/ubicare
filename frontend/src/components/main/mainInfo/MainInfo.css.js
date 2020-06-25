@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const MainInfoContainer = styled.div`
-  height: 90vh;
+  height: 95vh;
   padding: 0 4vw;
   margin: 0 auto;
   font-size: calc(2vmin);

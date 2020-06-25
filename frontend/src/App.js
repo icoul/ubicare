@@ -18,13 +18,13 @@ const App = () => {
     <Router>
       <div className="App">
         <Switch>
-          <AuthRoute
+          <Route
             exact path="/"
             render={props => <Main {...props} />} />
           <Route 
             path="/login" 
             render={props => <Login {...props} />} />
-          <AuthRoute
+          <Route
             path="/:type"
             render={props => <Main {...props} />} />
           <Route render={NotFound} />

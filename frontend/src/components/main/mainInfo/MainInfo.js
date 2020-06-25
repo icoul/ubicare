@@ -21,7 +21,22 @@ const MainInfo = ( props ) => {
 
   return (
     <>
-      <MainInfoContainer alignOption={alignOption}>
+      <MainInfoContainer>
+        <div>현황</div>
+        <div>
+          <div>Room별 현황</div>
+          <div>
+            <div>
+              <div>101호</div>
+              <div>성명</div>
+              <div>입소일</div>
+              <div>0일차</div>
+              <div>퇴소예정일</div>
+              <div>배터리잔량</div>
+            </div>
+          </div>
+          <div>ㅇㅇㅇ</div>
+        </div>
       </MainInfoContainer>
     </>
   )

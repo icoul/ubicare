@@ -16,12 +16,6 @@ const HeaderButtons = ( props ) => {
   return (
     <nav className="headerButtons">
       <ul className="buttonBox">
-        <li>
-          <Link to="/" className="buttonName"><TiHome />HOME</Link>
-        </li>
-        <li className="logout-button" onClick={handleLogout}>
-          <div className="buttonName"><FiLogOut />LOG OUT</div>
-        </li>
       </ul>
     </nav>
   )

@@ -6,7 +6,7 @@ const Title = (props) => {
     <div className='headerTitle'>
       <div>
         <span>
-          {props.mainTitle}
+          Ubi Care System
         </span>
       </div>
     </div>

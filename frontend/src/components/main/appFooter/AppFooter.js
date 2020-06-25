@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { menuManager } from 'redux/action/menus';
 import FooterButton from './FooterButton';
 
 import './AppFooter.css';
@@ -10,13 +9,15 @@ const AppFooter = ( props ) => {
   const userId = useSelector(store => store.loginManager.status.currentUser);
 
   useEffect(() => {
-    dispatch(menuManager(userId));
   }, [])
 
   return (
     <footer className="App-footer">
       <nav>
         <ul className="App-footer-ul">
+          <li><div className="mainMenu"><a>울산시</a></div></li>
+          <li><div className="mainMenu"><a>울산대학병원</a></div></li>
+          <li><div className="mainMenu"><a>(주)유비마이크로</a></div></li>
         </ul>
       </nav>
     </footer>

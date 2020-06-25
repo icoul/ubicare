@@ -18,7 +18,7 @@
   .App-header > div.headerLogo {flex: 2; min-width: 150px; justify-content: left;}
   .App-header > div.headerMainTitle {flex: 4}
   .App-header > div.headerTitle {flex: 4}
-  .App-header > div.headerClock {flex: 1.1}
+  .App-header > div.headerClock {flex: 1}
   .App-header > nav.headerButtons {flex: 0.9; justify-content: flex-end;}
 }
 

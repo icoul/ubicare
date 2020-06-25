@@ -18,14 +18,12 @@ import { combineReducers } from 'redux';
 import { connectRouter } from 'connected-react-router';
 import { dataLog } from './action/logs';
 import { modules } from './action/modules';
-import { menus } from './action/menus';
 import { loginManager } from './action/login';
 
 export default history => combineReducers({
   router: connectRouter(history),
   dataLog,
   modules,
-  menus,
   loginManager});
 
 
