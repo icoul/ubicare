@@ -1,0 +1,38 @@
+.signIn {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+@media all and (-ms-high-contrast:none) {
+  .signIn {
+    display: table-cell;
+    min-width: 100vw;
+    min-height: 100vh;
+    vertical-align: middle;
+    text-align: center;
+  }
+
+  .signIn .loginContainer {
+    display: inline-block;
+  }
+}
+
+.signIn .loginContainer {
+  padding: 45px;
+  margin: 215px;
+  border-radius: 12px;
+  min-height: 45vh;
+  min-width: 23vw;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.signIn .companyInfo {
+  color: #999eab;
+  font-size: 13px;
+  text-align: center;
+}

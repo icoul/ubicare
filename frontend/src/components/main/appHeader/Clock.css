@@ -1,0 +1,32 @@
+@media (min-width: 960px) {
+  .headerClock > div {
+    background: #12162f;
+    padding: 12px 8%;
+    font-size: 15px;
+    border-radius: 15px;
+    color: #5ba5bd;
+    width: 250px;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media (max-width: 960px) {
+  .headerClock > div {
+    background: #12162f;
+    padding: 12px 6%;
+    font-size: 12px;
+    border-radius: 15px;
+    color: #5ba5bd;
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.headerClock > div > .clockText {
+  margin-left: 10px;
+  line-height: 1.7;
+}
