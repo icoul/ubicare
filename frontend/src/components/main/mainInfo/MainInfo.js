@@ -19,6 +19,10 @@ const MainInfo = ( props ) => {
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.dispensingModules, props.modules])
 
+  const handleClick = (idx) => {
+    props.setDetailIdx(idx);
+    props.history.push("/detail");
+  }
 
   return (
     <>
@@ -46,7 +50,7 @@ const MainInfo = ( props ) => {
         <div className="info-contents">
           <div className="info-contents-title">Room별 현황</div>
           <div className="info-contents-container">
-            <MainInfoContent status="0">
+            <MainInfoContent status="0" onClick={() => handleClick(1)}>
               <div>101호</div>
               <div>성명</div>
               <div>입소일</div>
@@ -54,7 +58,7 @@ const MainInfo = ( props ) => {
               <div>퇴소예정일</div>
               <div>배터리잔량</div>
             </MainInfoContent>
-            <MainInfoContent status="0">
+            <MainInfoContent status="0" onClick={() => handleClick(1)}>
               <div>101호</div>
               <div>성명</div>
               <div>입소일</div>
@@ -62,7 +66,7 @@ const MainInfo = ( props ) => {
               <div>퇴소예정일</div>
               <div>배터리잔량</div>
             </MainInfoContent>
-            <MainInfoContent status="1">
+            <MainInfoContent status="1" onClick={() => handleClick(1)}>
               <div>101호</div>
               <div>성명</div>
               <div>입소일</div>
@@ -70,7 +74,7 @@ const MainInfo = ( props ) => {
               <div>퇴소예정일</div>
               <div>배터리잔량</div>
             </MainInfoContent>
-            <MainInfoContent status="2">
+            <MainInfoContent status="2" onClick={() => handleClick(1)}>
               <div>101호</div>
               <div>성명</div>
               <div>입소일</div>
