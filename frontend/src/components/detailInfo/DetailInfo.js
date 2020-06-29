@@ -42,7 +42,7 @@ const DetailInfo = (props) => {
     .catch(function (error) {
       console.log(error);
     });
-  }, [props.detailIdx, cancellationToken])
+  }, [paramState.pageIndex, props.detailIdx, cancellationToken])
 
   useEffect(() => {
     searchGasGraph();
@@ -55,7 +55,7 @@ const DetailInfo = (props) => {
       window.clearInterval(timer);
     };
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.detailIdx, cancellationToken])
+  }, [paramState.pageIndex, props.detailIdx, cancellationToken])
 
   useEffect(() => () => cancellationToken.cancel(), []);
 
