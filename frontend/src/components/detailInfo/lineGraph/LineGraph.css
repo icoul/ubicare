@@ -1,17 +1,18 @@
-.gasDetailGraph-lineGraph .wrapper {
+.infoDetailGraph-lineGraph .wrapper {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.gasDetailGraph-lineGraph { 
+.infoDetailGraph-lineGraph { 
+  width: 95%;
   position: relative;
   border-radius: 20px;
   background: #2F3B49;
   margin: 5px;
 }
 
-.gasDetailGraph-title {
+.infoDetailGraph-title {
   color: #fff;
   font-size: 15px;
   text-align: center;

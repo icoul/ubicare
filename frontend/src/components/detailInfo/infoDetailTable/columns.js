@@ -38,15 +38,6 @@ export const columnSetter = () => {
           ),
         },
         {
-          id: 'Battery',
-          Header: () => (
-            <div>Battery(%)</div>
-          ),
-          Cell: ({ row }) => (
-            batteryToText(row.original.battery)
-          ),
-        },
-        {
           Header: '측정시간',
           accessor: 'regTime',
         },

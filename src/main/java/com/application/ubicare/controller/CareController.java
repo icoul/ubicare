@@ -36,8 +36,7 @@ public class CareController {
                                      @RequestParam("moduleIdx") int moduleIdx) {
     Pageable paging = PageableRequest.setPageableObject(pageIndex, pageSize);
     Module module = moduleRepository.findByModuleIdx(moduleIdx);
-    Page<CareLog> a = careLogRepository.findByModuleOrderByRgstDtDesc(module, paging);
-    return a;
+    return careLogRepository.findByModuleOrderByRgstDtDesc(module, paging);
   }
 }
 

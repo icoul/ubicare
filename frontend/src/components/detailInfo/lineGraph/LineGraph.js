@@ -78,9 +78,9 @@ const LineGraph = (props) => {
 
   return (
     <>
-      <div className="gasDetailGraph-title">{ props.graphId }</div>
-      <div className="gasDetailGraph-lineGraph">
-        <Chart type="line" width="1650" height="300" options={config.options} series={config.series}/>
+      <div className="infoDetailGraph-title">{ props.graphId }</div>
+      <div className="infoDetailGraph-lineGraph">
+        <Chart type="line" width="100%" height="300" options={config.options} series={config.series}/>
       </div>
     </>
   )

@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components';
 
 export const Styles = styled.div`
   height: 77vh;
+  width: 95%;
   margin-top: 20px;
   padding: 1rem;
   background: #262f3b;
@@ -11,7 +12,7 @@ export const Styles = styled.div`
     overflow-y: auto;
     margin-bottom: 1%;
     table {
-      width: 95vw;
+      width: 100%;
       border-spacing: 0;
       thead {
         tr {
