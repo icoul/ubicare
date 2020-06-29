@@ -50,7 +50,7 @@ const MainInfo = ( props ) => {
         <div className="info-contents">
           <div className="info-contents-title">Room별 현황</div>
           <div className="info-contents-container">
-            <MainInfoContent status="0" onClick={() => handleClick(1)}>
+            <MainInfoContent status="0" onClick={() => handleClick(13)}>
               <div>101호</div>
               <div>성명</div>
               <div>입소일</div>

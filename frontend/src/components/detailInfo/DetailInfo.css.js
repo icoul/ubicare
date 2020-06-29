@@ -7,7 +7,7 @@ export const DetailInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   font-size: calc(2vmin);
   color: white;
 `;
