@@ -6,8 +6,11 @@ import com.application.ubicare.entity.CareLog;
 import com.application.ubicare.entity.Module;
 import com.application.ubicare.repository.CareLogRepository;
 import com.application.ubicare.repository.ModuleRepository;
+import com.application.ubicare.utils.PageableRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,10 +28,16 @@ public class CareController {
    * @param moduleIdx
    * @return
    */
-  @GetMapping("/api/care/search/graph")
-  public List<CareLog> careLogSearch(@RequestParam("moduleIdx") int moduleIdx) {
+  @GetMapping("/api/care/search")
+  public Page<CareLog> careLogSearch(@RequestParam("pageIndex") int pageIndex,
+                                     @RequestParam("pageSize") int pageSize,
+                                     @RequestParam("pageCount") int pageCount,
+                                     @RequestParam("elementCount") int elementCount,
+                                     @RequestParam("moduleIdx") int moduleIdx) {
+    Pageable paging = PageableRequest.setPageableObject(pageIndex, pageSize);
     Module module = moduleRepository.findByModuleIdx(moduleIdx);
-    return careLogRepository.findTop24ByModuleOrderByRgstDtDesc(module);
+    Page<CareLog> a = careLogRepository.findByModuleOrderByRgstDtDesc(module, paging);
+    return a;
   }
 }
 

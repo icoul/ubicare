@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DetailInfoContainer = styled.div`
-  min-height: 90vh;
+  max-height: 90vh;
   max-width: 95vw;
   margin: 0 auto;
   display: flex;
@@ -10,4 +10,5 @@ export const DetailInfoContainer = styled.div`
   justify-content: flex-start;
   font-size: calc(2vmin);
   color: white;
+  overflow-y: scroll;
 `;
