@@ -30,7 +30,7 @@ public class CareController {
   @GetMapping("/api/care/search/graph")
   public List<CareLog> careLogSearchForGraph(@RequestParam("moduleIdx") int moduleIdx) {
     Module module = moduleRepository.findByModuleIdx(moduleIdx);
-    return careLogRepository.findTop10ByModuleOrderByRgstDtDesc(module);
+    return careLogRepository.findTop24ByModuleOrderByRgstDtDesc(module);
   }
 
 

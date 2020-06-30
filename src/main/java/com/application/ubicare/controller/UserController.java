@@ -17,6 +17,7 @@ import java.util.Optional;
 
 import com.application.ubicare.dto.user.LoginCheckDTO;
 import com.application.ubicare.dto.user.PwdUpdateDTO;
+import com.application.ubicare.dto.user.UserDTO;
 import com.application.ubicare.entity.User;
 import com.application.ubicare.repository.UserRepository;
 import com.application.ubicare.service.UserService;
@@ -35,8 +36,8 @@ public class UserController {
    * @return
    */
   @GetMapping("/api/user")
-  public List<User> getUserData(){
-    return userRepository.findAll();
+  public List<UserDTO> getUserData(){
+    return userService.getUserAndCareData();
   }
 
   /**

@@ -10,6 +10,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
 public interface CareLogRepository extends PagingAndSortingRepository<CareLog, Integer> {
-	List<CareLog> findTop10ByModuleOrderByRgstDtDesc(Module module);
+	List<CareLog> findTop24ByModuleOrderByRgstDtDesc(Module module);
 	Page<CareLog> findByModuleOrderByRgstDtDesc(Module module, Pageable pageable);
 }
