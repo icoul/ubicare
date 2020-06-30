@@ -49,11 +49,11 @@ export const columnSetter = () => {
 };
 
 const statusConverter = (bodyTemp) => {
-  if (bodyTemp > 37) {
-    return <span style={{color: '#ff0018'}}>● 위험</span>;
+  if (bodyTemp >= 36.1 && bodyTemp <= 37.4) {
+    return <span style={{color: '#50bb5b'}}>● 정상</span>;
   }
-  else if (bodyTemp > 36) {
-    return <span style={{color: '#e8ad2e'}}>● 경고</span>;
+  else if (bodyTemp < 36.1 || bodyTemp > 37.4) {
+    return <span style={{color: '#ff0018'}}>● 위험</span>;
   }
   else {
     return <span style={{color: '#50bb5b'}}>● 정상</span>;
