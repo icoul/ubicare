@@ -19,9 +19,9 @@ const AppFooter = ( props ) => {
     <footer className="App-footer">
       <nav>
         <ul className="App-footer-ul">
-          <li><a><div className="mainMenu"><img width="150" src={ulsanCi} /></div></a></li>
-          <li><a><div className="mainMenu"><img width="50" src={ulsanUniverCi} />   울산대학병원</div></a></li>
-          <li><a><div className="mainMenu"><img width="150" src={ubiCi} /></div></a></li>
+          <li><a href="https://www.ulsan.go.kr/rep/index" target="_blank"><div className="mainMenu"><img width="150" src={ulsanCi} /></div></a></li>
+          <li><a href="https://www.uuh.ulsan.kr/kr/" target="_blank"><div className="mainMenu"><img width="50" src={ulsanUniverCi} />   울산대학병원</div></a></li>
+          <li><a href="http://www.ubimicro.co.kr/" target="_blank"><div className="mainMenu"><img width="150" src={ubiCi} /></div></a></li>
         </ul>
       </nav>
     </footer>

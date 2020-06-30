@@ -51,6 +51,7 @@
 
 .App-footer .App-footer-ul > li > a:hover {
   box-shadow: inset 0px -23px 25px -17px #66bfef, inset 0px -1px 1px -1px #02c5ff; color: #fff;
+  text-decoration: none;
 }
 
 
