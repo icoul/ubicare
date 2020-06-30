@@ -32,6 +32,9 @@ const LineGraph = (props) => {
         curve: 'straight',
         width: 2,
       },
+      markers: {
+        size: 3,
+      },
       tooltip: {
         theme: 'dark',
         y: {
@@ -55,12 +58,12 @@ const LineGraph = (props) => {
         }
       },
       xaxis: {
-        categories: props.xAxisCategories,
+        categories: props.categories,
         labels: {
-          show: true,
+          show: false,
           hideOverlappingLabels: true,
           style: {
-            colors: props.xAxisCategories.map((x) => { return '#fff'; }),
+            colors: props.categories.map((x) => { return '#fff'; }),
             fontSize: '10px'
           },
         },
