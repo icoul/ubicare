@@ -11,7 +11,7 @@ import { DetailInfoContainer } from './DetailInfo.css';
 
 import { nvl } from 'utils/nvl';
 
-const DetailInfo = (props) => {
+const DetailInfo = ({ userInfo }) => {
   const cancellationToken = useCancellationToken();
   const [ graphData, setGraphData ] = useState([]);
   const [ tableData, setTableData ] = useState([]);
@@ -27,7 +27,7 @@ const DetailInfo = (props) => {
                                               })
 
   const searchGasGraph = useCallback(() => {
-    axios.get('/api/care/search/graph', {params: { moduleIdx: props.detailIdx }}).then(response => {
+    axios.get('/api/care/search/graph', {params: { moduleIdx: userInfo.moduleIdx }}).then(response => {
       if(cancellationToken.isCancelled || nvl(response.data, null) === null) {
         return false;
       }
@@ -37,10 +37,10 @@ const DetailInfo = (props) => {
     .catch(function (error) {
       console.log(error);
     });
-  }, [props.detailIdx, cancellationToken])
+  }, [userInfo.moduleIdx, cancellationToken])
 
   const searchGasTable = useCallback(() => {
-    axios.get('/api/care/search', {params: { ...paramState, moduleIdx: props.detailIdx }}).then(response => {
+    axios.get('/api/care/search', {params: { ...paramState, moduleIdx: userInfo.moduleIdx }}).then(response => {
       if(cancellationToken.isCancelled || nvl(response.data, null) === null) {
         return false;
       }
@@ -53,12 +53,12 @@ const DetailInfo = (props) => {
     .catch(function (error) {
       console.log(error);
     });
-  }, [paramState.pageIndex, props.detailIdx, cancellationToken])
+  }, [paramState.pageIndex, userInfo.moduleIdx, cancellationToken])
 
   useEffect(() => {
     searchGasTable();
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paramState.pageIndex, props.detailIdx, cancellationToken])
+  }, [paramState.pageIndex, userInfo.moduleIdx, cancellationToken])
 
   useEffect(() => {
     searchGasGraph();
@@ -71,7 +71,7 @@ const DetailInfo = (props) => {
       window.clearInterval(timer);
     };
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.detailIdx, cancellationToken])
+  }, [userInfo.moduleIdx, cancellationToken])
 
   useEffect(() => () => cancellationToken.cancel(), []);
 
@@ -81,7 +81,12 @@ const DetailInfo = (props) => {
                  data={graphData.map((d) => { return nvl(d.bodyTemp, 0) })}
                  categories={graphData.map((d) => { return moment(d.rgstDt).format('YYYY-MM-DD HH:mm:ss') })}
                  xAxisCategories={graphData.map((d) => { return moment(d.rgstDt).format('HH:mm:ss') })} />
-      <InfoDetailTable tableData={tableData} paramState={paramState} canNextPage={canNextPage} canPreviousPage={canPreviousPage} dispatch={dispatch} />
+      <InfoDetailTable userInfo={userInfo} 
+                       tableData={tableData} 
+                       paramState={paramState} 
+                       canNextPage={canNextPage} 
+                       canPreviousPage={canPreviousPage} 
+                       dispatch={dispatch} />
     </DetailInfoContainer>
   )
 }

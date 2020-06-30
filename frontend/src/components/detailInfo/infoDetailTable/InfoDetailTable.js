@@ -6,7 +6,7 @@ import { columnSetter } from './columns';
 
 import { Styles } from 'utils/table/Table.css.js';
 
-const InfoDetailTable = ({ tableData, paramState, canNextPage, canPreviousPage, dispatch }) => {
+const InfoDetailTable = ({ userInfo, tableData, paramState, canNextPage, canPreviousPage, dispatch }) => {
   const [ data, setData ] = useState([]);
   const [ columns ] = useState(columnSetter());
 
@@ -17,7 +17,9 @@ const InfoDetailTable = ({ tableData, paramState, canNextPage, canPreviousPage, 
           ...makeDataLevel(d, 
                            paramState.pageIndex, 
                            paramState.pageSize, 
-                           index)
+                           index,
+                           userInfo.areaNm,
+                           userInfo.userNm)
         }
       })
     );

@@ -81,7 +81,6 @@ const LineGraph = (props) => {
 
   return (
     <>
-      <div className="infoDetailGraph-title">{ props.graphId }</div>
       <div className="infoDetailGraph-lineGraph">
         <Chart type="line" width="100%" height="300" options={config.options} series={config.series}/>
       </div>

@@ -1,9 +1,10 @@
 import moment from 'moment';
 
-export default function makeDataLevel(d, pageIndex, pageSize, index) {
+export default function makeDataLevel(d, pageIndex, pageSize, index, areaNm, userNm) {
   return {
     rnum: (pageIndex * pageSize) + index + 1,
-    modelNm: d.module.modelNm,
+    areaNm: areaNm,
+    userNm: userNm,
     bodyTemp: d.bodyTemp,
     regTime: moment(d.rgstDt).format('YYYY-MM-DD HH:mm:ss')
   }

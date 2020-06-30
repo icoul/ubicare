@@ -4,15 +4,19 @@ import { batteryToText } from 'utils/utils';
 export const columnSetter = () => {
   const columns = [
     {
-      Header: '장치정보',
+      Header: '환자정보',
       columns: [
         {
           Header: 'No',
           accessor: 'rnum',
         },
         {
-          Header: '장치명',
-          accessor: 'modelNm',
+          Header: '병실',
+          accessor: 'areaNm',
+        },
+        {
+          Header: '환자명',
+          accessor: 'userNm',
         },
       ],
     },

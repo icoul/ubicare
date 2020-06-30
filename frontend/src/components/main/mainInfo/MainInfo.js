@@ -42,8 +42,12 @@ const MainInfo = ( props ) => {
     //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const handleClick = (idx) => {
-    props.setDetailIdx(idx);
+  const handleClick = (moduleIdx, areaNm, userNm) => {
+    props.setUserInfo({
+      moduleIdx: moduleIdx,
+      areaNm: areaNm,
+      userNm: userNm
+    });
     props.history.push("/detail");
   }
 
@@ -51,25 +55,6 @@ const MainInfo = ( props ) => {
     <>
       <MainInfoContainer>
         <div className="info-title">
-          {/* <table>
-            <tbody>
-              <tr>
-                <td>입소현황 : </td>
-                <td>{userData.length}명 (총 {allUserData.length}명)</td>
-              </tr>
-              <tr>
-                <td>퇴소현황 : </td>
-                <td>총 { allUserData.length - userData.length }명</td>
-              </tr>
-              <tr>
-                <td>입소자 상태 종합 : </td>
-                <td>
-                  총 {userData.length}명 중 
-                  정상 {userData.filter(x => x.bodyTemp >= 36.1 && x.bodyTemp <= 37.4).length}명 
-                  이상 {userData.filter(x => (x.bodyTemp < 36.1 || x.bodyTemp > 37.4)).length}명</td>
-              </tr>
-            </tbody>
-          </table> */}
           <div>
             <div>입소현황</div>
             <div>{ userData.length }명</div>
@@ -95,7 +80,7 @@ const MainInfo = ( props ) => {
                 return (
                   <MainInfoContent key={d.userIdx} 
                                    status={ d.bodyTemp >= 36.1 && d.bodyTemp <= 37.4 ? '0' : '2' } 
-                                   onClick={() => handleClick(d.moduleIdx)}>
+                                   onClick={() => handleClick(d.moduleIdx, d.areaNm, d.userNm)}>
                     <div className="info-main-contents">{ d.areaNm }</div>
                     <div className="info-main-contents">{ d.userNm }</div>
                     <div>입소일 : { moment(d.inDt).format('YYYY-MM-DD') }</div>

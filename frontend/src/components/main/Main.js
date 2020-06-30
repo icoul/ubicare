@@ -16,7 +16,7 @@ const Main = (props) => {
   const dispatch = useDispatch();
   const [ mainTitle, setMainTitle ] = useState('');
   const [ titlePrefix, setTitlePrefix ] = useState('');
-  const [ detailIdx, setDetailIdx ] = useState(13);
+  const [ userInfo, setUserInfo ] = useState(null);
   const loginStatus = useSelector(store => store.loginManager.status); // 로그인 데이터
 
   useEffect(() => {
@@ -30,11 +30,11 @@ const Main = (props) => {
           <Switch>
             <Route
                 exact path="/"
-                render={props => <MainInfo setTitlePrefix={setTitlePrefix} setDetailIdx={setDetailIdx} {...props} />}
+                render={props => <MainInfo setTitlePrefix={setTitlePrefix} setUserInfo={setUserInfo} {...props} />}
               />
             <Route
                 exact path="/detail"
-                render={props => <DetailInfo detailIdx={detailIdx} {...props} />}
+                render={props => <DetailInfo userInfo={userInfo} {...props} />}
                 />
             <Route render={NotFound} />
           </Switch>
