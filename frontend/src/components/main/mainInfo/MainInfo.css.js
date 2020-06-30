@@ -23,11 +23,11 @@ export const MainInfoContainer = styled.div`
     font-size: 3vh;
     margin: 20px 0px;
 
-    & > table > tr > td {
+    & > table > tbody > tr > td {
       text-align: right;
     }
 
-    & > table > tr > td:nth-child(2) {
+    & > table > tbody > tr > td:nth-child(2) {
       padding-left: 2rem;
       text-align: left;
     }
@@ -75,10 +75,11 @@ export const MainInfoContent = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
+  padding: 10px;
+  border: solid 1px #fff;
+
   & > div {
-    height: 19.5%;
-    border: solid 1px;
+    height: 10%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -94,5 +95,10 @@ export const MainInfoContent = styled.div`
     ${props =>
       props.status === '2' && css`background: #ff0018;`
     }
+  }
+
+  & > .info-main-contents {
+    height: 27%;
+    font-size: 5vh;
   }
 `

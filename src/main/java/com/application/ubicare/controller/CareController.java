@@ -1,7 +1,5 @@
 package com.application.ubicare.controller;
 
-import java.util.List;
-
 import com.application.ubicare.entity.CareLog;
 import com.application.ubicare.entity.Module;
 import com.application.ubicare.repository.CareLogRepository;

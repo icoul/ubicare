@@ -50,22 +50,20 @@ const MainInfo = ( props ) => {
       <MainInfoContainer>
         <div className="info-title">
           <table>
-            <tr>
-              <td>기준일시 : </td>
-              <td>{moment().format('YYYY-MM-DD HH시 기준')}</td>
-            </tr>
-            <tr>
-              <td>입소현황 : </td>
-              <td>현 13명 (누계 총 111명)</td>
-            </tr>
-            <tr>
-              <td>퇴소현황 : </td>
-              <td>누계 총 30명</td>
-            </tr>
-            <tr>
-              <td>입소자 상태 종합 : </td>
-              <td>총 13명 중 정상 10명 요주의 2명 이상 1명</td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>입소현황 : </td>
+                <td>{userData.filter(x => moment(new Date()).diff(moment(x.outDt), 'days') < 0).length}명 (총 {userData.length}명)</td>
+              </tr>
+              <tr>
+                <td>퇴소현황 : </td>
+                <td>누계 총 30명</td>
+              </tr>
+              <tr>
+                <td>입소자 상태 종합 : </td>
+                <td>총 13명 중 정상 10명 요주의 2명 이상 1명</td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div className="info-contents">
@@ -74,9 +72,9 @@ const MainInfo = ( props ) => {
             {
               userData.map(d => {
                 return (
-                  <MainInfoContent status="0" onClick={() => handleClick(d.module.moduleIdx)}>
-                    <div>{ d.area.areaNm }</div>
-                    <div>{ d.userNm }</div>
+                  <MainInfoContent key={d.userIdx} status="0" onClick={() => handleClick(d.module.moduleIdx)}>
+                    <div className="info-main-contents">{ d.area.areaNm }</div>
+                    <div className="info-main-contents">{ d.userNm }</div>
                     <div>입소일 : { moment(d.inDt).format('YYYY-MM-DD') }</div>
                     <div>퇴소 { moment(new Date()).diff(moment(d.outDt), 'days') * -1 }일전</div>
                     <div>퇴소일 : { moment(d.outDt).format('YYYY-MM-DD') }</div>
