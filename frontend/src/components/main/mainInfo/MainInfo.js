@@ -1,23 +1,43 @@
 import React, { useState, useEffect, useCallback } from 'react'
-import { useDispatch } from 'react-redux';
+import axios from 'axios';
+import moment from 'moment';
+import useCancellationToken from 'utils/customHook/useCancellationToken';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { MainInfoContainer, MainInfoContent } from './MainInfo.css.js';
 import './MainInfo.css';
-import moment from 'moment';
+
+import { nvl } from 'utils/nvl';
 
 const MainInfo = ( props ) => {
-  const dispatch = useDispatch();
+  const cancellationToken = useCancellationToken();
+  const [ userData, setUserData ] = useState([]);
+
+  const getUserData = useCallback(() => {
+    axios.get('/api/user').then(response => {
+      if(cancellationToken.isCancelled || nvl(response.data, null) === null) {
+        return false;
+      }
+
+      setUserData(response.data);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }, [cancellationToken])
 
   useEffect(() => {
+    getUserData();
+
     const timer = window.setInterval(() => {
+      getUserData();
     }, Number(10000));
 
     return () => {
       window.clearInterval(timer);
     };
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.dispensingModules, props.modules])
+  }, [])
 
   const handleClick = (idx) => {
     props.setDetailIdx(idx);
@@ -50,34 +70,20 @@ const MainInfo = ( props ) => {
         <div className="info-contents">
           <div className="info-contents-title">Room별 현황</div>
           <div className="info-contents-container">
-            <MainInfoContent status="0" onClick={() => handleClick(13)}>
-              <div>101호</div>
-              <div>조마루</div>
-              <div>2020-06-25</div>
-              <div>5일차</div>
-              <div>2020-07-04</div>
-            </MainInfoContent>
-            <MainInfoContent status="0" onClick={() => handleClick(1)}>
-              <div>102호</div>
-              <div>진보라</div>
-              <div>2020-06-27</div>
-              <div>3일차</div>
-              <div>2020-07-07</div>
-            </MainInfoContent>
-            <MainInfoContent status="1" onClick={() => handleClick(1)}>
-              <div>103호</div>
-              <div>김사랑</div>
-              <div>2020-06-26</div>
-              <div>6일차</div>
-              <div>2020-07-04</div>
-            </MainInfoContent>
-            <MainInfoContent status="2" onClick={() => handleClick(1)}>
-              <div>104호</div>
-              <div>이슬비</div>
-              <div>2020-06-29</div>
-              <div>1일차</div>
-              <div>2020-07-10</div>
-            </MainInfoContent>
+            {
+              userData.map(d => {
+                return (
+                  <MainInfoContent status="0" onClick={() => handleClick(d.module.moduleIdx)}>
+                    <div>{ d.area.areaNm }</div>
+                    <div>{ d.userNm }</div>
+                    <div>입소일 : { moment(d.inDt).format('YYYY-MM-DD') }</div>
+                    <div>퇴소 { moment(new Date()).diff(moment(d.outDt), 'days') * -1 }일전</div>
+                    <div>퇴소일 : { moment(d.outDt).format('YYYY-MM-DD') }</div>
+                    <div>배터리 잔량</div>
+                  </MainInfoContent>
+                )
+              })
+            }
           </div>
           <div>대한민국을 건강하게 지키는 힘!</div>
         </div>
