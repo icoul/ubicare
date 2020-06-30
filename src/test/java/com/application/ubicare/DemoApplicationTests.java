@@ -1,4 +1,4 @@
-package com.application.mornitoring;
+package com.application.ubicare;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
