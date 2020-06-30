@@ -8,7 +8,7 @@ export const Styles = styled.div`
   background: #262f3b;
   border-radius: 10px;
   .table-container {
-    height: 90%;
+    height: 86%; 
     overflow-y: auto;
     margin-bottom: 1%;
     table {
