@@ -2,7 +2,7 @@
   .headerClock > div {
     background: #12162f;
     padding: 12px 8%;
-    font-size: 15px;
+    font-size: 1.9vh;
     border-radius: 15px;
     color: #5ba5bd;
     width: 300px;
@@ -17,7 +17,7 @@
   .headerClock > div {
     background: #12162f;
     padding: 12px 6%;
-    font-size: 12px;
+    font-size: 1.9vh;
     border-radius: 15px;
     color: #5ba5bd;
     flex-direction: row;
