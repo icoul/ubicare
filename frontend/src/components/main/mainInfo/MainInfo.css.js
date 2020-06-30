@@ -16,7 +16,7 @@ export const MainInfoContainer = styled.div`
   & > .info-title {
     width: 100%;
     height: 20vh;
-    background: #111a33;
+    background: #262f3b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -36,7 +36,7 @@ export const MainInfoContainer = styled.div`
   & > .info-contents {
     width: 100%;
     height: 60vh;
-    background: #111a33;
+    background: #262f3b;
     padding: 5px;
     display: flex;
     flex-direction: column;
@@ -48,7 +48,7 @@ export const MainInfoContainer = styled.div`
   & > .info-contents > .info-contents-title {
     width: 100%;
     height: 10%;
-    background: #3f3f3f;
+    background: #1f242c;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -69,14 +69,15 @@ export const MainInfoContainer = styled.div`
 `
 
 export const MainInfoContent = styled.div`
-  width: 100%;
+  width: 90%;
   height: 90%;
+  margin: 0 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   
   & > div {
-    height: 16.5%;
+    height: 19.5%;
     border: solid 1px;
     display: flex;
     justify-content: center;

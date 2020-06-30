@@ -16,6 +16,9 @@ const HeaderButtons = ( props ) => {
   return (
     <nav className="headerButtons">
       <ul className="buttonBox">
+        <li>
+          <Link to="/" className="buttonName"><TiHome />HOME</Link>
+        </li>
       </ul>
     </nav>
   )

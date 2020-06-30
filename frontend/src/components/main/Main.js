@@ -16,7 +16,7 @@ const Main = (props) => {
   const dispatch = useDispatch();
   const [ mainTitle, setMainTitle ] = useState('');
   const [ titlePrefix, setTitlePrefix ] = useState('');
-  const [ detailIdx, setDetailIdx ] = useState(15);
+  const [ detailIdx, setDetailIdx ] = useState(13);
   const loginStatus = useSelector(store => store.loginManager.status); // 로그인 데이터
 
   useEffect(() => {

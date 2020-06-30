@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Row, Col } from 'react-bootstrap';
 import { SHA256 } from 'utils/SHA256';
-import logo from 'static/images/logo/logo.png';
+import logo from 'static/images/logo/ubi_ci.png';
 
 import './LoginForm.css';
 

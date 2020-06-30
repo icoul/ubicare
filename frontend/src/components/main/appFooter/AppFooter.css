@@ -36,12 +36,6 @@
     color: #fff;
   }
 
-  .App-footer .App-footer-ul > li > div.mainMenu:hover > a,
-  .App-footer .App-footer-ul > li > div.subMenu > ul > li:hover > a {
-    color: #fff;
-    text-decoration: none;
-  }
-
   .App-footer .App-footer-ul > li > div.mainMenu {
     width: 100%;
     height: 98%;
@@ -49,48 +43,14 @@
     align-items: center;
     justify-content: center;
   }
-
-  .App-footer .App-footer-ul > li > div.subMenu {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    color: #60687d;
-    display: none;
-  }
-
-  .App-footer .App-footer-ul > li > div.on {
-    display: block;
-  }
-
-  .App-footer .App-footer-ul > li > div.subMenu > ul {
-    padding: 0px;
-    width: 100%;
-    height: 100%;
-  }
-
-  .App-footer .App-footer-ul > li > div.subMenu > ul > li {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #101010;
-    border-bottom: 1px solid #1e1e1e;
-  }
 }
 
 .App-footer nav {
   height: 100%;
 }
 
-.App-footer .App-footer-ul > li > div.mainMenu > a.activate,
-.App-footer .App-footer-ul > li > div.subMenu > ul > li > a.activate {
-  color: #fff;
-}
-
-.App-footer .App-footer-ul > li > div.mainMenu > a.activate,
-.App-footer .App-footer-ul > li > div.mainMenu > a:hover {
-  box-shadow: inset 0px -23px 25px -17px #66bfef, inset 0px -1px 1px -1px #02c5ff;
+.App-footer .App-footer-ul > li > a:hover {
+  box-shadow: inset 0px -23px 25px -17px #66bfef, inset 0px -1px 1px -1px #02c5ff; color: #fff;
 }
 
 
