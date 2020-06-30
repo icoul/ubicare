@@ -27,6 +27,19 @@ const DetailInfo = (props) => {
                                               })
 
   const searchGasGraph = useCallback(() => {
+    axios.get('/api/care/search/graph', {params: { moduleIdx: props.detailIdx }}).then(response => {
+      if(cancellationToken.isCancelled || nvl(response.data, null) === null) {
+        return false;
+      }
+      
+      setGraphData(response.data.reverse());
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }, [props.detailIdx, cancellationToken])
+
+  const searchGasTable = useCallback(() => {
     axios.get('/api/care/search', {params: { ...paramState, moduleIdx: props.detailIdx }}).then(response => {
       if(cancellationToken.isCancelled || nvl(response.data, null) === null) {
         return false;
@@ -35,13 +48,16 @@ const DetailInfo = (props) => {
       setCanNextPage(!response.data.last);
       setCanPreviousPage(!response.data.first);
       
-      const topTenInfoData = response.data.content.slice(0, 10);
-      setGraphData(topTenInfoData.reverse());
       setTableData(response.data.content);
     })
     .catch(function (error) {
       console.log(error);
     });
+  }, [paramState.pageIndex, props.detailIdx, cancellationToken])
+
+  useEffect(() => {
+    searchGasTable();
+    //eslint-disable-next-line react-hooks/exhaustive-deps
   }, [paramState.pageIndex, props.detailIdx, cancellationToken])
 
   useEffect(() => {
@@ -55,7 +71,7 @@ const DetailInfo = (props) => {
       window.clearInterval(timer);
     };
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paramState.pageIndex, props.detailIdx, cancellationToken])
+  }, [props.detailIdx, cancellationToken])
 
   useEffect(() => () => cancellationToken.cancel(), []);
 

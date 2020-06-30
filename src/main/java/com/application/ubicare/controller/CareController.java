@@ -1,5 +1,7 @@
 package com.application.ubicare.controller;
 
+import java.util.List;
+
 import com.application.ubicare.entity.CareLog;
 import com.application.ubicare.entity.Module;
 import com.application.ubicare.repository.CareLogRepository;
@@ -20,9 +22,20 @@ public class CareController {
   @Autowired
   public ModuleRepository moduleRepository;
 
+  /**
+   * 정보 조회 그래프용
+   * @param moduleIdx
+   * @return
+   */
+  @GetMapping("/api/care/search/graph")
+  public List<CareLog> careLogSearchForGraph(@RequestParam("moduleIdx") int moduleIdx) {
+    Module module = moduleRepository.findByModuleIdx(moduleIdx);
+    return careLogRepository.findTop10ByModuleOrderByRgstDtDesc(module);
+  }
+
 
   /**
-   * 정보 조회
+   * 정보 조회 테이블용
    * @param moduleIdx
    * @return
    */
