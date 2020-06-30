@@ -13,6 +13,7 @@ import { nvl } from 'utils/nvl';
 const MainInfo = ( props ) => {
   const cancellationToken = useCancellationToken();
   const [ userData, setUserData ] = useState([]);
+  const [ allUserData, setAllUserData ] = useState([]);
 
   const getUserData = useCallback(() => {
     axios.get('/api/user').then(response => {
@@ -20,7 +21,8 @@ const MainInfo = ( props ) => {
         return false;
       }
 
-      setUserData(response.data);
+      setAllUserData(response.data);
+      setUserData(response.data.filter(x => moment(new Date()).diff(moment(x.outDt), 'days') <= 0));
     })
     .catch(function (error) {
       console.log(error);
@@ -53,15 +55,18 @@ const MainInfo = ( props ) => {
             <tbody>
               <tr>
                 <td>입소현황 : </td>
-                <td>{userData.filter(x => moment(new Date()).diff(moment(x.outDt), 'days') < 0).length}명 (총 {userData.length}명)</td>
+                <td>{userData.length}명 (총 {allUserData.length}명)</td>
               </tr>
               <tr>
                 <td>퇴소현황 : </td>
-                <td>누계 총 30명</td>
+                <td>총 { allUserData.length - userData.length }명</td>
               </tr>
               <tr>
                 <td>입소자 상태 종합 : </td>
-                <td>총 13명 중 정상 10명 요주의 2명 이상 1명</td>
+                <td>
+                  총 {userData.length}명 중 
+                  정상 {userData.filter(x => x.bodyTemp >= 36.1 && x.bodyTemp <= 37.4).length}명 
+                  이상 {userData.filter(x => (x.bodyTemp < 36.1 || x.bodyTemp > 37.4)).length}명</td>
               </tr>
             </tbody>
           </table>
@@ -72,8 +77,10 @@ const MainInfo = ( props ) => {
             {
               userData.map(d => {
                 return (
-                  <MainInfoContent key={d.userIdx} status="0" onClick={() => handleClick(d.module.moduleIdx)}>
-                    <div className="info-main-contents">{ d.area.areaNm }</div>
+                  <MainInfoContent key={d.userIdx} 
+                                   status={ d.bodyTemp >= 36.1 && d.bodyTemp <= 37.4 ? '0' : '2' } 
+                                   onClick={() => handleClick(d.moduleIdx)}>
+                    <div className="info-main-contents">{ d.areaNm }</div>
                     <div className="info-main-contents">{ d.userNm }</div>
                     <div>입소일 : { moment(d.inDt).format('YYYY-MM-DD') }</div>
                     <div>퇴소 { moment(new Date()).diff(moment(d.outDt), 'days') * -1 }일전</div>
