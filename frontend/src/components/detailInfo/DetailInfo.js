@@ -11,7 +11,7 @@ import { DetailInfoContainer } from './DetailInfo.css';
 
 import { nvl } from 'utils/nvl';
 
-const DetailInfo = ({ userInfo }) => {
+const DetailInfo = ({ userInfo, history }) => {
   const cancellationToken = useCancellationToken();
   const [ graphData, setGraphData ] = useState([]);
   const [ tableData, setTableData ] = useState([]);
@@ -37,7 +37,7 @@ const DetailInfo = ({ userInfo }) => {
     .catch(function (error) {
       console.log(error);
     });
-  }, [userInfo.moduleIdx, cancellationToken])
+  }, [userInfo, cancellationToken])
 
   const searchGasTable = useCallback(() => {
     axios.get('/api/care/search', {params: { ...paramState, moduleIdx: userInfo.moduleIdx }}).then(response => {
@@ -53,14 +53,24 @@ const DetailInfo = ({ userInfo }) => {
     .catch(function (error) {
       console.log(error);
     });
-  }, [paramState.pageIndex, userInfo.moduleIdx, cancellationToken])
+  }, [paramState.pageIndex, userInfo, cancellationToken])
 
   useEffect(() => {
+    if (!userInfo) {
+      history.push("/");
+      return;
+    }
+
     searchGasTable();
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [paramState.pageIndex, userInfo.moduleIdx, cancellationToken])
+  }, [paramState.pageIndex, userInfo, cancellationToken])
 
   useEffect(() => {
+    if (!userInfo) {
+      history.push("/");
+      return;
+    }
+
     searchGasGraph();
 
     const timer = window.setInterval(() => {
@@ -71,7 +81,7 @@ const DetailInfo = ({ userInfo }) => {
       window.clearInterval(timer);
     };
     //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userInfo.moduleIdx, cancellationToken])
+  }, [userInfo, cancellationToken])
 
   useEffect(() => () => cancellationToken.cancel(), []);
 
