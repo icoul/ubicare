@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 import axios from 'axios';
 import moment from 'moment';
+import { TiBatteryCharge, TiBatteryHigh, TiBatteryMid, TiBatteryLow } from 'react-icons/ti'
 import useCancellationToken from 'utils/customHook/useCancellationToken';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -79,7 +80,7 @@ const MainInfo = ( props ) => {
                     <div>입소일 : { moment(d.inDt).format('YYYY-MM-DD') }</div>
                     <div>퇴소 { moment(new Date()).diff(moment(d.outDt), 'days') * -1 }일전</div>
                     <div>퇴소일 : { moment(d.outDt).format('YYYY-MM-DD') }</div>
-                    <div>배터리 잔량</div>
+                    <div><TiBatteryCharge /></div>
                   </MainInfoContent>
                 )
               })
