@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Getter;
@@ -32,11 +34,13 @@ public class User{
   @Column(name = "user_nm")
   private String userNm;
 
-  @Column(name = "dept_id")
-  private String deptId;
+  @OneToOne
+  @JoinColumn(name = "module_idx")
+  private Module module;
 
-  @Column(name = "dept_nm")
-  private String deptNm;
+  @OneToOne
+  @JoinColumn(name = "area_idx")
+  private Area area;
 
   @Column(name = "tel_no_1")
   private String telNo1;
@@ -50,6 +54,12 @@ public class User{
   private String postCode;
   private String addr1;
   private String addr2;
+
+  @Column(name = "in_dt")
+  private Date inDt;
+
+  @Column(name = "out_dt")
+  private Date outDt;
 
   @Column(name = "rgst_id")
   private String rgstId;

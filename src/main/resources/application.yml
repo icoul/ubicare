@@ -10,7 +10,7 @@ spring:
       suffix: .jsp
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://112.185.161.246:23306/ubicare
+    url: jdbc:mariadb://192.168.0.104:3306/ubicare
     username: root
     password: ubimicro
   jpa:
@@ -21,4 +21,4 @@ spring:
 server:
   tomcat:
     uri-encoding: UTF-8
-  port: 9075
+  port: 9077

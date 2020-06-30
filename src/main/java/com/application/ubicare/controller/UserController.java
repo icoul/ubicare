@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -28,6 +29,15 @@ public class UserController {
 
   @Autowired
   public UserRepository userRepository;
+
+  /**
+   * 메인페이지 사용자 데이터 조회
+   * @return
+   */
+  @GetMapping("/api/user")
+  public List<User> getUserData(){
+    return userRepository.findAll();
+  }
 
   /**
    * 사용자 로그인 체크
@@ -52,7 +62,7 @@ public class UserController {
    * @return
    */
   @GetMapping("/api/user/getDatas")
-  public Page<User> getUserData(@RequestParam("pageIndex") int pageIndex,
+  public Page<User> getUserDataForTable(@RequestParam("pageIndex") int pageIndex,
                                 @RequestParam("pageSize") int pageSize){
     Pageable page = PageableRequest.setPageableObject(pageIndex, pageSize);
     return userRepository.findAll(page);
