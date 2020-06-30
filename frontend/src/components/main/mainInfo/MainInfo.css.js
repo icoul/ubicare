@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 export const MainInfoContainer = styled.div`
-  height: 95vh;
+  height: 93vh;
   padding: 0 4vw;
   margin: 0 auto;
   font-size: calc(2vmin);
@@ -18,18 +18,33 @@ export const MainInfoContainer = styled.div`
     height: 20vh;
     background: #262f3b;
     display: flex;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     font-size: 3vh;
     margin: 20px 0px;
-
-    & > table > tbody > tr > td {
-      text-align: right;
+    
+    & > div {
+      display: flex;
+      flex-direction: column;
+      flex: 3;
+      border-right: 1px solid;
     }
 
-    & > table > tbody > tr > td:nth-child(2) {
-      padding-left: 2rem;
-      text-align: left;
+    & > div:last-child {
+      border-right-width: 0px;
+    }
+
+    & > div > div:nth-child(2) {
+      font-size: 8vh;
+    }
+
+    & > div:nth-child(3) > div:nth-child(2) {
+      color: #50bb5b;
+    }
+
+    & > div:nth-child(4) > div:nth-child(2) {
+      color: #ff0018;
     }
   }
 

@@ -51,7 +51,7 @@ const MainInfo = ( props ) => {
     <>
       <MainInfoContainer>
         <div className="info-title">
-          <table>
+          {/* <table>
             <tbody>
               <tr>
                 <td>입소현황 : </td>
@@ -69,7 +69,23 @@ const MainInfo = ( props ) => {
                   이상 {userData.filter(x => (x.bodyTemp < 36.1 || x.bodyTemp > 37.4)).length}명</td>
               </tr>
             </tbody>
-          </table>
+          </table> */}
+          <div>
+            <div>입소현황</div>
+            <div>{ userData.length }명</div>
+          </div>
+          <div>
+            <div>퇴소현황</div>
+            <div>{ allUserData.length - userData.length }명</div>
+          </div>
+          <div>
+            <div>정상</div>
+            <div>{ userData.filter(x => x.bodyTemp >= 36.1 && x.bodyTemp <= 37.4).length }명</div>
+          </div>
+          <div>
+            <div>이상</div>
+            <div>{ userData.filter(x => (x.bodyTemp < 36.1 || x.bodyTemp > 37.4)).length }명</div>
+          </div>
         </div>
         <div className="info-contents">
           <div className="info-contents-title">Room별 현황</div>
