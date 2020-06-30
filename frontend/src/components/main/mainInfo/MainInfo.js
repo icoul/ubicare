@@ -84,7 +84,7 @@ const MainInfo = ( props ) => {
                     <div className="info-main-contents">{ d.areaNm }</div>
                     <div className="info-main-contents">{ d.userNm }</div>
                     <div>입소일 : { moment(d.inDt).format('YYYY-MM-DD') }</div>
-                    <div>퇴소 { moment(new Date()).diff(moment(d.outDt), 'days') * -1 }일전</div>
+                    <div>퇴소 { moment(new Date()).diff(moment(d.outDt), 'days') * -1 + 1 }일전</div>
                     <div>퇴소일 : { moment(d.outDt).format('YYYY-MM-DD') }</div>
                     <div><TiBatteryCharge /></div>
                   </MainInfoContent>
