@@ -48,7 +48,9 @@ export const MainInfoContainer = styled.div`
     }
   }
 
-  @media (max-width: 960px) {
+  @media (max-width: 550px) {
+    height: 77vh;
+
     & > .info-title {
       font-size: 2vh;
 
@@ -56,10 +58,6 @@ export const MainInfoContainer = styled.div`
         font-size: 4vh;
       }
     }
-  }
-
-  @media (max-width: 550px) {
-    height: 77vh;
   }
 
   & > .info-contents {
@@ -72,12 +70,6 @@ export const MainInfoContainer = styled.div`
     justify-content: flex-start;
     align-items: center;
     font-size: 3vh;
-  }
-
-  @media (max-width: 960px) {
-    & > .info-contents {
-      font-size: 2vh;
-    }
   }
 
   & > .info-contents > .info-contents-title {
@@ -97,6 +89,16 @@ export const MainInfoContainer = styled.div`
     align-items: center;
   }
 
+  @media (max-width: 550px) {
+    & > .info-contents {
+      font-size: 2vh;
+    }
+
+    & > .info-contents > .info-contents-container {
+      flex-direction: column;
+    }
+  }
+
   ${props =>
     props.displayMenuName === 'icon' && (props.alignOption === 'vertical' || props.alignOption === 'area') &&
     css`justify-content: flex-start;`
@@ -113,11 +115,12 @@ export const MainInfoContent = styled.div`
   padding: 10px;
   border: solid 1px #fff;
 
-  & > div {
-    height: 10%;
+  & > div.info-main-contents {
+    height: 25%;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 5vh;
 
     ${props =>
       props.status === '0' && css`background: #50bb5b;`
@@ -132,17 +135,51 @@ export const MainInfoContent = styled.div`
     }
   }
 
-  & > .info-main-contents {
-    height: 27%;
-    font-size: 5vh;
+  & > div.info-sub-contents-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    & > div {
+      width: 100%;
+
+      ${props =>
+        props.status === '0' && css`background: #50bb5b;`
+      }
+  
+      ${props =>
+        props.status === '1' && css`background: #e8ad2e;`
+      }
+  
+      ${props =>
+        props.status === '2' && css`background: #ff0018;`
+      }
+    }
   }
 
-  @media (max-width: 960px) {
-    & > div {
-      font-size: 1vh;
+  @media (max-width: 550px) {
+    width: 100%;
+    padding: 5px;
+    margin: 5px;
+    flex-direction: row;
+
+    & > div.info-main-contents {
+      width: 24%;
+      height: 100%;
+      font-size: 2vh;
     }
 
-    & > .info-main-contents {
+    & > div.info-sub-contents-container {
+      width: 50%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    & > div.info-sub-contents-container > div {
+      height: 25%;
       font-size: 1vh;
     }
   }

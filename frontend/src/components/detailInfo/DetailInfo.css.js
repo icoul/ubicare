@@ -14,5 +14,6 @@ export const DetailInfoContainer = styled.div`
 
   @media (max-width: 550px) {
     height: 77vh;
+    overflow-y: auto;
   }
 `;

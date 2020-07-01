@@ -70,6 +70,16 @@ export const Styles = styled.div`
 
   @media (max-width: 550px) {
     overflow: hidden;
+
+    .table-container > table {
+      thead > tr > th {
+        font-size: 1vh;
+      }
+
+      tbody > tr > td {
+        font-size: 1vh;
+      }
+    }
   }
 `
 
@@ -85,6 +95,11 @@ export const PageNation = styled.div`
   ${props =>
     props.pageNumberRangeCount === 0 &&
     css`display:none;`}
+
+  @media (max-width: 550px) {
+    width: 83vw;
+    padding: 10px 1rem;
+  }
 `
 
 export const NextPrevButton = styled.button`
@@ -115,5 +130,9 @@ export const PageButton = styled(`div`)`
   ${props =>
     props.selected &&
     css`background: #272F3C`
+  }
+
+  @media (max-width: 550px) {
+    padding: 4px 2px;
   }
 `
