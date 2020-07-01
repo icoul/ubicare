@@ -11,4 +11,8 @@ export const DetailInfoContainer = styled.div`
   font-size: calc(2vmin);
   color: white;
   overflow-y: scroll;
+
+  @media (max-width: 550px) {
+    height: 77vh;
+  }
 `;

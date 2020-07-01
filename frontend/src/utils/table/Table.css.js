@@ -66,7 +66,11 @@ export const Styles = styled.div`
         width: 150px;
       }
     }
-  },
+  }
+
+  @media (max-width: 550px) {
+    overflow: hidden;
+  }
 `
 
 export const PageNation = styled.div`
