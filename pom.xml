@@ -86,8 +86,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<build.profile.id>dev</build.profile.id>
-				<profileActive>dev</profileActive>
+				<env>dev</env>
 			</properties>
 		</profile>
 		<profile>
@@ -96,8 +95,7 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<properties>
-				<build.profile.id>prod</build.profile.id>
-				<profileActive>prod</profileActive>
+				<env>prod</env>
 			</properties>
 		</profile>
 	</profiles>
@@ -109,6 +107,11 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 		</plugins> -->
+		<resources>
+			<resource>
+				<directory>src/main/resources/${env}</directory>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>com.github.eirslett</groupId>
