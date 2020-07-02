@@ -10,10 +10,6 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
-/*
-* 가스 5종 Entity
-* module_scn: 0
-*/
 @Getter
 @Setter
 @Entity

@@ -4,8 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import com.application.ubicare.dto.user.UserDTO;
@@ -20,9 +19,8 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserServiceImpl implements UserService {
-  final String PERSISTENCE_UNIT_NAME = "jpa";
-  EntityManagerFactory emf = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT_NAME);
-  
+  @PersistenceContext
+  private EntityManager em;
   @Autowired
   UserRepository userRepository;
   @Autowired
@@ -37,7 +35,6 @@ public class UserServiceImpl implements UserService {
   }
 
   public List<UserDTO> getUserAndCareData() {
-    EntityManager em = emf.createEntityManager();
     String sql = "SELECT u.user_idx AS userIdx, u.user_nm AS userNm, u.module_idx AS moduleIdx, a.area_nm AS areaNm, " +
                         "c.A1 AS bodyTemp, u.in_dt AS inDt, u.out_dt AS outDt " + 
                  "FROM user_tb u LEFT JOIN area_tb a on u.area_idx = a.area_idx " + 
