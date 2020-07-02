@@ -60,7 +60,7 @@ const MainInfo = ( props ) => {
             <div>{ userData.length }명</div>
           </div>
           <div>
-            <div>퇴소현황</div>
+            <div>퇴소누계</div>
             <div>{ allUserData.length - userData.length }명</div>
           </div>
           <div>
