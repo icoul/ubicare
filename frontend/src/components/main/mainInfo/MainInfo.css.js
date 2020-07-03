@@ -87,6 +87,8 @@ export const MainInfoContainer = styled.div`
     display: flex;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
+    overflow-y: scroll;
   }
 
   @media (max-width: 550px) {
@@ -106,32 +108,42 @@ export const MainInfoContainer = styled.div`
 `
 
 export const MainInfoContent = styled.div`
-  width: 90%;
-  height: 90%;
-  margin: 0 10px;
+  ${props =>
+    css`
+      width: ${props.length > 15 ? 6.5 : 95 / props.length}%
+      height: ${props.length > 15 ? 100 / (props.length / 15) : 80 * props.length / 15}%;
+    `
+  }
+  
+  margin: 5px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 10px;
+  padding: 3px;
   border: solid 1px #fff;
+  
+  ${props =>
+    props.status === '0' && css`background: #50bb5b;`
+  }
+
+  ${props =>
+    props.status === '1' && css`background: #e8ad2e;`
+  }
+
+  ${props =>
+    props.status === '2' && css`background: #ff0018;`
+  }
 
   & > div.info-main-contents {
-    height: 25%;
+    height: 34%;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 5vh;
 
     ${props =>
-      props.status === '0' && css`background: #50bb5b;`
-    }
-
-    ${props =>
-      props.status === '1' && css`background: #e8ad2e;`
-    }
-
-    ${props =>
-      props.status === '2' && css`background: #ff0018;`
+      css`
+        font-size: ${props.length > 15 ? '.7' : 0.5 * 15 / props.length}em
+      `
     }
   }
 
@@ -141,19 +153,18 @@ export const MainInfoContent = styled.div`
     justify-content: center;
     align-items: center;
 
+    ${props =>
+      css`
+        font-size: ${props.length > 15 ? '.4' : 0.2 * 15 / props.length}em
+      `
+    }
+
     & > div {
       width: 100%;
 
-      ${props =>
-        props.status === '0' && css`background: #50bb5b;`
-      }
-  
-      ${props =>
-        props.status === '1' && css`background: #e8ad2e;`
-      }
-  
-      ${props =>
-        props.status === '2' && css`background: #ff0018;`
+      & > svg {
+        width: 15%;
+        height: 15%;
       }
     }
   }

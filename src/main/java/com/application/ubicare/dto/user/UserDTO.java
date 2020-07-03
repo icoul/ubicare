@@ -13,6 +13,7 @@ public class UserDTO{
   private Integer userIdx;
   private String userNm;
   private Integer moduleIdx;
+  private Integer areaIdx;
   private String areaNm;
   private Double bodyTemp;
   private Date inDt;

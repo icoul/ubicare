@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
   }
 
   public List<UserDTO> getUserAndCareData() {
-    String sql = "SELECT u.user_idx AS userIdx, u.user_nm AS userNm, u.module_idx AS moduleIdx, a.area_nm AS areaNm, u.bodyTemp, " +
+    String sql = "SELECT u.user_idx AS userIdx, u.user_nm AS userNm, u.module_idx AS moduleIdx, a.area_idx AS areaIdx, a.area_nm AS areaNm, u.bodyTemp, " +
                  "       u.in_dt AS inDt, u.out_dt AS outDt, CASE WHEN u.in_dt IS NULL THEN 1 ELSE 0 END AS orderNum " +
                  "FROM area_tb a LEFT JOIN " +
                  "( " +
