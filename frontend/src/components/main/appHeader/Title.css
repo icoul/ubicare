@@ -19,7 +19,12 @@
   }
 }
 
+@font-face {
+  font-family: FrontPageNeue;
+  src: url(../../../static/font/FrontPageNeue.otf);
+}
+
 .headerTitle > div > span {
-  color: #d0d5e0;
-  font-size: 4vh;
+  font-family: FrontPageNeue;
+  font-size: 3rem;
 }

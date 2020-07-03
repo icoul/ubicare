@@ -5,8 +5,8 @@ const Title = (props) => {
   return (
     <div className='headerTitle'>
       <div>
-        <span>
-          Ubi Care System
+        <span style={{color: "#1463A0"}}>
+          UB<span style={{color: "#e56d41"}}>i</span>CareS
         </span>
       </div>
     </div>
