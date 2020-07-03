@@ -10,11 +10,12 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class UserDTO{
-  private int userIdx;
+  private Integer userIdx;
   private String userNm;
-  private int moduleIdx;
+  private Integer moduleIdx;
   private String areaNm;
   private Double bodyTemp;
   private Date inDt;
   private Date outDt;
+  private Integer orderNum;
 }

@@ -35,11 +35,14 @@ public class UserServiceImpl implements UserService {
   }
 
   public List<UserDTO> getUserAndCareData() {
-    String sql = "SELECT u.user_idx AS userIdx, u.user_nm AS userNm, u.module_idx AS moduleIdx, a.area_nm AS areaNm, " +
-                        "c.A1 AS bodyTemp, u.in_dt AS inDt, u.out_dt AS outDt " + 
-                 "FROM user_tb u LEFT JOIN area_tb a on u.area_idx = a.area_idx " + 
-                                "RIGHT JOIN (SELECT * FROM care_log_tb GROUP BY module_idx ORDER BY module_idx DESC) c ON u.module_idx = c.module_idx " + 
-                 "ORDER BY u.in_dt";
+    String sql = "SELECT u.user_idx AS userIdx, u.user_nm AS userNm, u.module_idx AS moduleIdx, a.area_nm AS areaNm, u.bodyTemp, " +
+                 "       u.in_dt AS inDt, u.out_dt AS outDt, CASE WHEN u.in_dt IS NULL THEN 1 ELSE 0 END AS orderNum " +
+                 "FROM area_tb a LEFT JOIN " +
+                 "( " +
+                 "  SELECT ut.*, c.A1 AS bodyTemp " +
+                 "  FROM user_tb ut RIGHT JOIN (SELECT * FROM care_log_tb GROUP BY module_idx ORDER BY module_idx DESC) c ON ut.module_idx = c.module_idx " +
+                 ") u on u.area_idx = a.area_idx " +
+                 "ORDER BY orderNum, u.in_dt ";
 
     Query nativeQuery = em.createNativeQuery(sql);
     JpaResultMapper jpaResultMapper = new JpaResultMapper();
