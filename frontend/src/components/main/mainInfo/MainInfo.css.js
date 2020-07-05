@@ -63,40 +63,63 @@ export const MainInfoContainer = styled.div`
   & > .info-contents {
     width: 100%;
     height: 60vh;
-    background: #262f3b;
     padding: 5px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
     font-size: 3vh;
+    background: #262f3b;
+
+    & > .info-contents-title {
+      width: 100%;
+      height: 10%;
+      background: #1f242c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    & > .info-contents-container {
+      width: 100%;
+      height: 80%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      overflow-y: auto;
+    }
   }
 
-  & > .info-contents > .info-contents-title {
+  & > .icon-info-contents {
     width: 100%;
-    height: 10%;
-    background: #1f242c;
+    height: 84vh;
+    margin: 1vh 0px;
+    padding: 5px;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
     align-items: center;
-  }
+    font-size: 3vh;
+    background: #262f3b;
 
-  & > .info-contents > .info-contents-container {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-wrap: wrap;
-    overflow-y: scroll;
+    & > .info-contents-container {
+      width: 100%;
+      height: 95%;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-wrap: wrap;
+      overflow-y: auto;
+    }
   }
 
   @media (max-width: 550px) {
-    & > .info-contents {
+    & > .info-contents, & > .icon-info-contents {
       font-size: 2vh;
     }
 
-    & > .info-contents > .info-contents-container {
+    & > .info-contents > .info-contents-container, & > .icon-info-contents > .info-contents-container {
       flex-direction: column;
     }
   }
@@ -109,10 +132,16 @@ export const MainInfoContainer = styled.div`
 
 export const MainInfoContent = styled.div`
   ${props =>
-    css`
-      width: ${props.length > 15 ? 6.5 : 95 / props.length}%
-      height: ${props.length > 15 ? 100 / (props.length / 15) : 80 * props.length / 15}%;
-    `
+    props.mainType === 'menu' ?
+      css`
+        width: ${props.length > 15 ? 6.5 : 95 / props.length}%
+        height: ${props.length > 15 ? 100 / (props.length / 15) : 80 * props.length / 15}%;
+      `
+      :
+      css`
+        width: ${props.length > 15 ? 6.5 : 95 / props.length}%
+        height: ${props.length > 15 ? 75 / (props.length / 15) : 50 * props.length / 15}%;
+      `
   }
   
   margin: 5px;
