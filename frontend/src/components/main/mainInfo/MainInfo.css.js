@@ -199,7 +199,8 @@ export const MainInfoContent = styled.div`
   }
 
   @media (max-width: 550px) {
-    width: 100%;
+    width: 85%;
+    height: 20%;
     padding: 5px;
     margin: 5px;
     flex-direction: row;
@@ -216,6 +217,11 @@ export const MainInfoContent = styled.div`
       display: flex;
       justify-content: center;
       align-items: center;
+
+      & > div > svg {
+        width: 2em;
+        height: 2em;
+      }
     }
 
     & > div.info-sub-contents-container > div {
