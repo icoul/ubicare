@@ -20,6 +20,10 @@ spring:
     hibernate:
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+logging:
+  level:
+    root: warn
+  config: logback-spring.xml
 server:
   tomcat:
     uri-encoding: UTF-8
